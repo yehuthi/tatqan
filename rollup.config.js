@@ -1,5 +1,6 @@
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
+import scss from "rollup-plugin-scss";
 import copy from "rollup-plugin-copy";
 
 export default {
@@ -10,6 +11,11 @@ export default {
     plugins: [terser()],
   },
   plugins: [
+    scss({
+      output: "dist/tatqan.css",
+      watch: "src/style",
+      outputStyle: "compressed",
+    }),
     typescript(),
     copy({ targets: [{ src: "static/**/*", dest: "dist" }] }),
   ],
