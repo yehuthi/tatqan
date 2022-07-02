@@ -13,6 +13,7 @@ const output = document.getElementById("output") as HTMLOutputElement;
       source.value.slice(0, selectionStart) +
       glyph +
       source.value.slice(source.selectionEnd);
+    source.dispatchEvent(new Event("input"));
     setTimeout(() => {
       source.focus();
       source.selectionEnd = source.selectionStart =
