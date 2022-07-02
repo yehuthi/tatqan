@@ -1,18 +1,26 @@
 import "./style/style.scss";
 import "./keyboard";
+import he2paleo from "he2paleo";
+
+const source = document.getElementById("source") as HTMLTextAreaElement;
+const output = document.getElementById("output") as HTMLOutputElement;
 
 (document.getElementById("vkb") as any).addEventListener(
   "virtualpress",
   ({ detail: glyph }: { detail: string }) => {
-    const src = document.getElementById("source") as HTMLTextAreaElement;
-    const { selectionStart } = src;
-    src.value =
-      src.value.slice(0, selectionStart) +
+    const { selectionStart } = source;
+    source.value =
+      source.value.slice(0, selectionStart) +
       glyph +
-      src.value.slice(src.selectionEnd);
+      source.value.slice(source.selectionEnd);
     setTimeout(() => {
-      src.focus();
-      src.selectionEnd = src.selectionStart = selectionStart + glyph.length;
+      source.focus();
+      source.selectionEnd = source.selectionStart =
+        selectionStart + glyph.length;
     }, 0);
   }
 );
+
+source.addEventListener("input", () => {
+  output.innerText = he2paleo(source.value);
+});

@@ -2,6 +2,8 @@ import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 import scss from "rollup-plugin-scss";
 import copy from "rollup-plugin-copy-watch";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 
 export default {
   input: "src/main.ts",
@@ -11,6 +13,8 @@ export default {
     plugins: [terser()],
   },
   plugins: [
+    nodeResolve(),
+    commonjs(),
     scss({
       output: "dist/tatqan.css",
       watch: "src/style",
