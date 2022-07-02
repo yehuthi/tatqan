@@ -1,7 +1,7 @@
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 import scss from "rollup-plugin-scss";
-import copy from "rollup-plugin-copy";
+import copy from "rollup-plugin-copy-watch";
 
 export default {
   input: "src/main.ts",
@@ -17,6 +17,9 @@ export default {
       outputStyle: "compressed",
     }),
     typescript(),
-    copy({ targets: [{ src: "static/**/*", dest: "dist" }] }),
+    copy({
+      targets: [{ src: "static/**/*", dest: "dist" }],
+      watch: "static",
+    }),
   ],
 };

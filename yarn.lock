@@ -397,7 +397,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:>=3.0.0 <4.0.0":
+"chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.4.0":
   version: 3.5.3
   resolution: "chokidar@npm:3.5.3"
   dependencies:
@@ -1344,16 +1344,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-copy@npm:^3.4.0":
-  version: 3.4.0
-  resolution: "rollup-plugin-copy@npm:3.4.0"
+"rollup-plugin-copy-watch@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "rollup-plugin-copy-watch@npm:0.0.1"
   dependencies:
     "@types/fs-extra": ^8.0.1
+    chokidar: ^3.4.0
     colorette: ^1.1.0
     fs-extra: ^8.1.0
     globby: 10.0.1
     is-plain-object: ^3.0.0
-  checksum: 6eed5b2498fbe44d694f65ae9a9287b13a606b98a232b5a144a94140e8631efae5f5953b573ba68bf2dc59ab11c223ad3ea6f6cd15b51f42287f4bcc234f0e8b
+  checksum: 0ec2c929a056117e0ab21963989c4b3c6b887df2156ab11eb5877d34e5baa5ce2c6ab8fe9dee0ed8895c8e849e9577eab8a29c815aac33417fa5a0a71f2acf9b
   languageName: node
   linkType: hard
 
@@ -1615,7 +1616,7 @@ __metadata:
   dependencies:
     "@rollup/plugin-typescript": ^8.3.3
     rollup: ^2.75.7
-    rollup-plugin-copy: ^3.4.0
+    rollup-plugin-copy-watch: ^0.0.1
     rollup-plugin-scss: 3
     rollup-plugin-terser: ^7.0.2
     sass: ^1.53.0

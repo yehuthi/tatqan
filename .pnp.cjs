@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@rollup/plugin-typescript", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:8.3.3"],\
             ["rollup", "npm:2.75.7"],\
-            ["rollup-plugin-copy", "npm:3.4.0"],\
+            ["rollup-plugin-copy-watch", "npm:0.0.1"],\
             ["rollup-plugin-scss", "npm:3.0.0"],\
             ["rollup-plugin-terser", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:7.0.2"],\
             ["sass", "npm:1.53.0"],\
@@ -1598,12 +1598,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["rollup-plugin-copy", [\
-        ["npm:3.4.0", {\
-          "packageLocation": "./.yarn/cache/rollup-plugin-copy-npm-3.4.0-1f9ca5b167-6eed5b2498.zip/node_modules/rollup-plugin-copy/",\
+      ["rollup-plugin-copy-watch", [\
+        ["npm:0.0.1", {\
+          "packageLocation": "./.yarn/cache/rollup-plugin-copy-watch-npm-0.0.1-f043ccc8c4-0ec2c929a0.zip/node_modules/rollup-plugin-copy-watch/",\
           "packageDependencies": [\
-            ["rollup-plugin-copy", "npm:3.4.0"],\
+            ["rollup-plugin-copy-watch", "npm:0.0.1"],\
             ["@types/fs-extra", "npm:8.1.2"],\
+            ["chokidar", "npm:3.5.3"],\
             ["colorette", "npm:1.4.0"],\
             ["fs-extra", "npm:8.1.0"],\
             ["globby", "npm:10.0.1"],\
@@ -1897,7 +1898,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tatqan", "workspace:."],\
             ["@rollup/plugin-typescript", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:8.3.3"],\
             ["rollup", "npm:2.75.7"],\
-            ["rollup-plugin-copy", "npm:3.4.0"],\
+            ["rollup-plugin-copy-watch", "npm:0.0.1"],\
             ["rollup-plugin-scss", "npm:3.0.0"],\
             ["rollup-plugin-terser", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:7.0.2"],\
             ["sass", "npm:1.53.0"],\
