@@ -139,6 +139,7 @@ class VirtualKeyboard extends HTMLElement {
       const { sofit } = letter;
       if (sofit) {
         const button = document.createElement("button");
+        button.onclick = clickHandler as any;
         button.innerText = letter.sofit;
         button.title = `${letter.nameEn} Sofit | ${letter.nameHe} סוֹפִית`;
         letterSet.appendChild(button);
