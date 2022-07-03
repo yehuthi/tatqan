@@ -240,11 +240,10 @@ div { justify-content: space-between; }
 
 fieldset {
   display: flex;
+  flex-wrap: wrap;
   padding: 0.2em;
 }
-fieldset > * {
-  flex-grow: 1;
-}
+fieldset > * { flex-grow: 1; }
 `;
         return style;
       })()
