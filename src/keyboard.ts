@@ -194,6 +194,18 @@ class VirtualKeyboard extends HTMLElement {
 
         niqqudGroup.appendChild(set);
       });
+      niqqudGroup.appendChild(
+        (() => {
+          const set = document.createElement("fieldset");
+          set.dir = "rtl";
+          set.innerHTML = `<legend>-</legend>`;
+          const button = document.createElement("button");
+          button.innerText = "\u05B0";
+          button.onclick = clickHandler as any;
+          set.appendChild(button);
+          return set;
+        })()
+      );
 
       return niqqudGroup;
     })();
