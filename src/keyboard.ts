@@ -225,10 +225,19 @@ button {
   font-size: 0.9em;
 }
 
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+div { justify-content: space-between; }
+
 .niqqud { display: flex; }
 .niqqud button::before {
   content: '${"\u00A0"}';
 }
+
+fieldset { padding: 0.2em; }
 `;
         return style;
       })()
