@@ -202,9 +202,20 @@ class VirtualKeyboard extends HTMLElement {
       (() => {
         const style = document.createElement("style");
         style.innerHTML = `
+@font-face {
+  font-family: "u0400";
+  src: url("u0400.eot");
+  font-weight: normal;
+  font-style: normal;
+}
+button {
+  font-family: u0400;
+  font-size: 0.9em;
+}
+
 .niqqud { display: flex; }
 .niqqud button::before {
-  content: 'א';
+  content: '${"\u00A0"}';
 }
 `;
         return style;
