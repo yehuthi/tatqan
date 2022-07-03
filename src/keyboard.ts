@@ -116,6 +116,29 @@ const letters = [
   },
 ];
 
+const niqqud_a = [
+  { glyph: "\u05B8" },
+  { glyph: "\u05B7" },
+  { glyph: "\u05B2" },
+];
+
+const niqqud_e = [
+  { glyph: "\u05B5" },
+  { glyph: "\u05B6" },
+  { glyph: "\u05B1" },
+];
+
+const niqqud_i = [{ glyph: "\u05B4\u05D9" }, { glyph: "\u05B4" }];
+
+const niqqud_o = [
+  { glyph: "\u05B9" },
+  { glyph: "ו\u05BA" },
+  { glyph: "\u05C7" },
+  { glyph: "\u05B3" },
+];
+
+const niqqud_u = [{ glyph: "ו\u05BC" }, { glyph: "\u05BB" }];
+
 class VirtualKeyboard extends HTMLElement {
   constructor() {
     super();
@@ -126,8 +149,8 @@ class VirtualKeyboard extends HTMLElement {
     letterSet.dir = "rtl";
     letterSet.innerHTML = `<legend>Letter</legend>`;
     const clickHandler = (ev: Event & { target: HTMLButtonElement }) => {
-      const letter = ev.target.innerText;
-      this.dispatchEvent(new CustomEvent("virtualpress", { detail: letter }));
+      const glyph = ev.target.innerText;
+      this.dispatchEvent(new CustomEvent("virtualpress", { detail: glyph }));
     };
     letters.forEach((letter) => {
       const button = document.createElement("button");
@@ -145,6 +168,48 @@ class VirtualKeyboard extends HTMLElement {
         letterSet.appendChild(button);
       }
     });
+
+    const niqqudGroup = (() => {
+      const niqqudGroup = document.createElement("div");
+      niqqudGroup.className = "niqqud";
+
+      const sets = [
+        ["A", niqqud_a],
+        ["E", niqqud_e],
+        ["I", niqqud_i],
+        ["O", niqqud_o],
+        ["U", niqqud_u],
+      ] as const;
+      sets.forEach(([vowel, niqquds]) => {
+        const set = document.createElement("fieldset");
+        set.dir = "rtl";
+        set.innerHTML = `<legend>${vowel}</legend>`;
+
+        niqquds.forEach(({ glyph }) => {
+          const button = document.createElement("button");
+          button.textContent = glyph;
+          button.onclick = clickHandler as any;
+          set.appendChild(button);
+        });
+
+        niqqudGroup.appendChild(set);
+      });
+
+      return niqqudGroup;
+    })();
+    root.appendChild(niqqudGroup);
+    root.appendChild(
+      (() => {
+        const style = document.createElement("style");
+        style.innerHTML = `
+.niqqud { display: flex; }
+.niqqud button::before {
+  content: 'א';
+}
+`;
+        return style;
+      })()
+    );
   }
 }
 
