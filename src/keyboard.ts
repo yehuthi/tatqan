@@ -223,6 +223,7 @@ class VirtualKeyboard extends HTMLElement {
 button {
   font-family: u0400;
   font-size: 0.9em;
+  padding: 0.1em;
 }
 
 :host {
@@ -237,7 +238,13 @@ div { justify-content: space-between; }
   content: '${"\u00A0"}';
 }
 
-fieldset { padding: 0.2em; }
+fieldset {
+  display: flex;
+  padding: 0.2em;
+}
+fieldset > * {
+  flex-grow: 1;
+}
 `;
         return style;
       })()
