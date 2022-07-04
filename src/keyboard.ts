@@ -1,143 +1,235 @@
 const letters = [
   {
-    letter: "א",
+    glyph: "א",
     nameEn: "Alef",
     nameHe: "אָלֶף",
   },
   {
-    letter: "ב",
+    glyph: "ב",
     nameEn: "Bet",
     nameHe: "בֵּית",
   },
   {
-    letter: "ג",
+    glyph: "ג",
     nameEn: "Gimel",
     nameHe: "גִימֵל",
   },
   {
-    letter: "ד",
+    glyph: "ד",
     nameEn: "Dalet",
     nameHe: "דָלֶת",
   },
   {
-    letter: "ה",
+    glyph: "ה",
     nameEn: "He",
     nameHe: "הֵא",
   },
   {
-    letter: "ו",
+    glyph: "ו",
     nameEn: "Waw",
     nameHe: "וָו",
   },
   {
-    letter: "ז",
+    glyph: "ז",
     nameEn: "Zayin",
     nameHe: "זַיִן",
   },
   {
-    letter: "ח",
+    glyph: "ח",
     nameEn: "Ḥet",
     nameHe: "חֵית",
   },
   {
-    letter: "ט",
+    glyph: "ט",
     nameEn: "Tet",
     nameHe: "טֵית",
   },
   {
-    letter: "י",
+    glyph: "י",
     nameEn: "Yod",
     nameHe: "יוֹד",
   },
   {
-    letter: "כ",
+    glyph: "כ",
     nameEn: "Kaf",
     nameHe: "כַף",
     sofit: "ך",
   },
   {
-    letter: "ל",
+    glyph: "ל",
     nameEn: "Lamed",
     nameHe: "לָמֶד",
   },
   {
-    letter: "מ",
+    glyph: "מ",
     nameEn: "Mem",
     nameHe: "מֵם",
     sofit: "ם",
   },
   {
-    letter: "נ",
+    glyph: "נ",
     nameEn: "Nun",
     nameHe: "נוּן",
     sofit: "ן",
   },
   {
-    letter: "ס",
+    glyph: "ס",
     nameEn: "Samekh",
     nameHe: "ְסָמֶך",
   },
   {
-    letter: "ע",
+    glyph: "ע",
     nameEn: "ʕayin",
     nameHe: "עַיִן",
   },
   {
-    letter: "פ",
+    glyph: "פ",
     nameEn: "Pe",
     nameHe: "פֵה",
     sofit: "ף",
   },
   {
-    letter: "צ",
+    glyph: "צ",
     nameEn: "Ṣadi",
     nameHe: "צַדִי",
     sofit: "ץ",
   },
   {
-    letter: "ק",
+    glyph: "ק",
     nameEn: "Qof",
     nameHe: "קוֹף",
   },
   {
-    letter: "ר",
+    glyph: "ר",
     nameEn: "Resh",
     nameHe: "רֵישׁ",
   },
   {
-    letter: "ש",
+    glyph: "ש",
     nameEn: "Shin",
     nameHe: "שִׁין",
   },
   {
-    letter: "ת",
+    glyph: "ת",
     nameEn: "Taw",
     nameHe: "תָו",
   },
 ];
 
-const niqqud_a = [
-  { glyph: "\u05B8" },
-  { glyph: "\u05B7" },
-  { glyph: "\u05B2" },
-];
+const clickHandler = (vkb: VirtualKeyboard) => (ev: Event) => {
+  const glyph = (ev.target as HTMLButtonElement).innerText;
+  vkb.dispatchEvent(new CustomEvent("virtualpress", { detail: glyph }));
+};
 
-const niqqud_e = [
-  { glyph: "\u05B5" },
-  { glyph: "\u05B6" },
-  { glyph: "\u05B1" },
-];
+const glyphButton = (
+  vkb: VirtualKeyboard,
+  { glyph }: { glyph: string }
+): HTMLElement => {
+  const button = document.createElement("button");
+  button.innerText = glyph;
+  button.onclick = clickHandler(vkb);
+  return button;
+};
 
-const niqqud_i = [{ glyph: "\u05B4\u05D9" }, { glyph: "\u05B4" }];
+const glyphSofitButton = (
+  vkb: VirtualKeyboard,
+  entry: { glyph: string; sofit?: string }
+): HTMLElement => {
+  const nonSofitButton = glyphButton(vkb, entry);
+  const { sofit } = entry;
+  if (sofit) {
+    const buttonGroup = document.createElement("div");
+    const sofitButton = glyphButton(vkb, { glyph: sofit });
+    buttonGroup.append(nonSofitButton, sofitButton);
+    return buttonGroup;
+  } else {
+    return nonSofitButton;
+  }
+};
 
-const niqqud_o = [
-  { glyph: "\u05B9" },
-  { glyph: "ו\u05BA" },
-  { glyph: "\u05C7" },
-  { glyph: "\u05B3" },
-];
-
-const niqqud_u = [{ glyph: "ו\u05BC" }, { glyph: "\u05BB" }];
+const vkbLayout = [
+  {
+    id: "letters",
+    sets: [
+      {
+        title: "Letters",
+        data: letters,
+        render: glyphSofitButton,
+      },
+    ],
+  },
+  {
+    id: "niqqud",
+    sets: [
+      {
+        title: "A",
+        data: [{ glyph: "\u05B8" }, { glyph: "\u05B7" }, { glyph: "\u05B2" }],
+        render: glyphButton,
+      },
+      {
+        title: "E",
+        data: [{ glyph: "\u05B5" }, { glyph: "\u05B6" }, { glyph: "\u05B1" }],
+        render: glyphButton,
+      },
+      {
+        title: "I",
+        data: [{ glyph: "\u05B4\u05D9" }, { glyph: "\u05B4" }],
+        render: glyphButton,
+      },
+      {
+        title: "O",
+        data: [
+          { glyph: "\u05B9" },
+          { glyph: "ו\u05BA" },
+          { glyph: "\u05C7" },
+          { glyph: "\u05B3" },
+        ],
+        render: glyphButton,
+      },
+      {
+        title: "U",
+        data: [{ glyph: "ו\u05BC" }, { glyph: "\u05BB" }],
+        render: glyphButton,
+      },
+      {
+        title: "-",
+        data: [{ glyph: "\u05B0" }],
+        render: glyphButton,
+      },
+    ],
+  },
+  {
+    id: "special",
+    sets: [
+      {
+        title: "Special",
+        data: [
+          {
+            glyph: "\uFB4F",
+            nameEn: "Alef Lamed Ligature",
+          },
+          {
+            glyph: "\u05EF",
+            nameEn: "Yod Triangle",
+          },
+          {
+            glyph: "\u05F2",
+            nameEn: "Double Yod",
+          },
+          {
+            glyph: "\u05F1",
+            nameEn: "Waw Yod Ligature",
+          },
+          {
+            glyph: "\u05F0",
+            nameEn: "Waw Waw Ligature",
+          },
+        ],
+        render: glyphButton,
+      },
+    ],
+  },
+] as const;
 
 class VirtualKeyboard extends HTMLElement {
   constructor() {
@@ -145,71 +237,6 @@ class VirtualKeyboard extends HTMLElement {
 
     const root = this.attachShadow({ mode: "open" });
 
-    const letterSet = root.appendChild(document.createElement("fieldset"));
-    letterSet.dir = "rtl";
-    letterSet.innerHTML = `<legend>Letter</legend>`;
-    const clickHandler = (ev: Event & { target: HTMLButtonElement }) => {
-      const glyph = ev.target.innerText;
-      this.dispatchEvent(new CustomEvent("virtualpress", { detail: glyph }));
-    };
-    letters.forEach((letter) => {
-      const button = document.createElement("button");
-      button.onclick = clickHandler as any;
-      button.innerText = letter.letter;
-      button.title = `${letter.nameEn} | ${letter.nameHe}`;
-      letterSet.appendChild(button);
-
-      const { sofit } = letter;
-      if (sofit) {
-        const button = document.createElement("button");
-        button.onclick = clickHandler as any;
-        button.innerText = letter.sofit;
-        button.title = `${letter.nameEn} Sofit | ${letter.nameHe} סוֹפִית`;
-        letterSet.appendChild(button);
-      }
-    });
-
-    const niqqudGroup = (() => {
-      const niqqudGroup = document.createElement("div");
-      niqqudGroup.className = "niqqud";
-
-      const sets = [
-        ["A", niqqud_a],
-        ["E", niqqud_e],
-        ["I", niqqud_i],
-        ["O", niqqud_o],
-        ["U", niqqud_u],
-      ] as const;
-      sets.forEach(([vowel, niqquds]) => {
-        const set = document.createElement("fieldset");
-        set.dir = "rtl";
-        set.innerHTML = `<legend>${vowel}</legend>`;
-
-        niqquds.forEach(({ glyph }) => {
-          const button = document.createElement("button");
-          button.textContent = glyph;
-          button.onclick = clickHandler as any;
-          set.appendChild(button);
-        });
-
-        niqqudGroup.appendChild(set);
-      });
-      niqqudGroup.appendChild(
-        (() => {
-          const set = document.createElement("fieldset");
-          set.dir = "rtl";
-          set.innerHTML = `<legend>-</legend>`;
-          const button = document.createElement("button");
-          button.innerText = "\u05B0";
-          button.onclick = clickHandler as any;
-          set.appendChild(button);
-          return set;
-        })()
-      );
-
-      return niqqudGroup;
-    })();
-    root.appendChild(niqqudGroup);
     root.appendChild(
       (() => {
         const style = document.createElement("style");
@@ -222,8 +249,9 @@ class VirtualKeyboard extends HTMLElement {
 }
 button {
   font-family: u0400;
-  font-size: 0.9em;
-  padding: 0.1em;
+  font-size: 1em;
+  width: 2ch;
+  padding: 0;
 }
 
 :host {
@@ -231,23 +259,45 @@ button {
   flex-direction: column;
 }
 
-div { justify-content: space-between; }
-
-.niqqud { display: flex; }
-.niqqud button::before {
-  content: '${"\u00A0"}';
+:host > div {
+  display: flex;
+  flex-wrap: wrap;
 }
+div > * { flex-grow: 1; }
 
 fieldset {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.2em;
+  padding: 0.5em;
 }
+
 fieldset > * { flex-grow: 1; }
+
+.letters fieldset > div {
+  display: flex;
+}
+
+.niqqud button::before {
+  content: '\u00A0';
+}
 `;
         return style;
       })()
     );
+    vkbLayout.forEach((group) => {
+      const groupRoot = document.createElement("div");
+      groupRoot.className = group.id;
+      group.sets.forEach((set) => {
+        const setRoot = document.createElement("fieldset");
+        setRoot.dir = "rtl";
+        setRoot.innerHTML = `<legend>${set.title}</legend>`;
+        set.data.forEach((entry) => {
+          setRoot.appendChild(set.render(this, entry));
+        });
+        groupRoot.appendChild(setRoot);
+      });
+      root.appendChild(groupRoot);
+    });
   }
 }
 
