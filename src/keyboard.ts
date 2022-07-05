@@ -210,12 +210,16 @@ const vkbLayout = [
             nameEn: "Alef Lamed Ligature",
           },
           {
+            glyph: "\u05F2",
+            nameEn: "Double Yod",
+          },
+          {
             glyph: "\u05EF",
             nameEn: "Yod Triangle",
           },
           {
-            glyph: "\u05F2",
-            nameEn: "Double Yod",
+            glyph: "\u05C6",
+            nameEn: "Nun Hafukhah",
           },
           {
             glyph: "\u05F1",
@@ -227,6 +231,37 @@ const vkbLayout = [
           },
         ],
         render: glyphButton,
+      },
+    ],
+  },
+  {
+    id: "punctuation",
+    sets: [
+      {
+        title: "Punctuation",
+        render: glyphButton,
+        data: [
+          {
+            glyph: "\u05C3",
+            nameEn: "Sof Pasuq",
+          },
+          {
+            glyph: "\u05C0",
+            nameEn: "Paseq",
+          },
+          {
+            glyph: "\u05BE",
+            nameEn: "Maqaf",
+          },
+          {
+            glyph: "\u05F4",
+            nameEn: "Gershayim",
+          },
+          {
+            glyph: "\u05F3",
+            nameEn: "Geresh",
+          },
+        ],
       },
     ],
   },
