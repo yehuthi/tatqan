@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-node-resolve", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:13.3.0"],\
             ["@rollup/plugin-typescript", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:8.3.3"],\
             ["he2paleo", "npm:0.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.75.7"],\
             ["rollup-plugin-copy-watch", "npm:0.0.1"],\
             ["rollup-plugin-scss", "npm:3.0.0"],\
@@ -2068,6 +2069,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-node-resolve", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:13.3.0"],\
             ["@rollup/plugin-typescript", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:8.3.3"],\
             ["he2paleo", "npm:0.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.75.7"],\
             ["rollup-plugin-copy-watch", "npm:0.0.1"],\
             ["rollup-plugin-scss", "npm:3.0.0"],\
