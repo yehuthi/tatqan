@@ -1,5 +1,6 @@
 import "./keyboard";
 import he2paleo from "he2paleo";
+import isMobile from "is-mobile";
 
 const source = document.getElementById("source") as HTMLTextAreaElement;
 const output = document.getElementById("output") as HTMLOutputElement;
@@ -24,3 +25,5 @@ const output = document.getElementById("output") as HTMLOutputElement;
 source.addEventListener("input", () => {
   output.innerText = he2paleo(source.value);
 });
+
+if (!isMobile({ tablet: true })) setTimeout(() => source.focus(), 0);

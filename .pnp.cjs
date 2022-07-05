@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-node-resolve", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:13.3.0"],\
             ["@rollup/plugin-typescript", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:8.3.3"],\
             ["he2paleo", "npm:0.1.0"],\
+            ["is-mobile", "npm:3.1.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.75.7"],\
             ["rollup-plugin-copy-watch", "npm:0.0.1"],\
@@ -1243,6 +1244,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["is-mobile", [\
+        ["npm:3.1.1", {\
+          "packageLocation": "./.yarn/cache/is-mobile-npm-3.1.1-71682da812-b7c549020a.zip/node_modules/is-mobile/",\
+          "packageDependencies": [\
+            ["is-mobile", "npm:3.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["is-module", [\
         ["npm:1.0.0", {\
           "packageLocation": "./.yarn/cache/is-module-npm-1.0.0-79ba918283-8cd5390730.zip/node_modules/is-module/",\
@@ -2069,6 +2079,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@rollup/plugin-node-resolve", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:13.3.0"],\
             ["@rollup/plugin-typescript", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:8.3.3"],\
             ["he2paleo", "npm:0.1.0"],\
+            ["is-mobile", "npm:3.1.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.75.7"],\
             ["rollup-plugin-copy-watch", "npm:0.0.1"],\

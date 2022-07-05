@@ -1004,6 +1004,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-mobile@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "is-mobile@npm:3.1.1"
+  checksum: b7c549020ac4674520378623afc4976694ff686eb3761cfad12da936ba9c2d675687bdc3c82eadf5a25147ce51c682800679bf835e31de272f05c026cd2b2f14
+  languageName: node
+  linkType: hard
+
 "is-module@npm:^1.0.0":
   version: 1.0.0
   resolution: "is-module@npm:1.0.0"
@@ -1743,6 +1750,7 @@ __metadata:
     "@rollup/plugin-node-resolve": ^13.3.0
     "@rollup/plugin-typescript": ^8.3.3
     he2paleo: ^0.1.0
+    is-mobile: ^3.1.1
     rimraf: ^3.0.2
     rollup: ^2.75.7
     rollup-plugin-copy-watch: ^0.0.1
