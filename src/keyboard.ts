@@ -116,6 +116,164 @@ const letters = [
   },
 ];
 
+const taamim = [
+  {
+    glyph: "\u0591",
+    nameEn: "Etnaḥta",
+    nameHe: "אֶתְנַחְתָּ֑א",
+  },
+  {
+    glyph: "\u0592",
+    nameEn: "Segolta",
+    nameHe: "סְגוֺלְתָּא֒",
+  },
+  {
+    glyph: "\u0593",
+    nameEn: "Shalshelet",
+    nameHe: "שַׁלְשֶׁ֓לֶת",
+  },
+  {
+    glyph: "\u0594",
+    nameEn: "Zaqef Qaṭan",
+    nameHe: "זָקֵף קָטֹ֔ן",
+  },
+  {
+    glyph: "\u0595",
+    nameEn: "Zaqef Gadol",
+    nameHe: "זָקֵף גָּד֕וֹל",
+  },
+  {
+    glyph: "\u0596",
+    nameEn: "Tifḥa",
+    nameHe: "טִפְחָ֖א",
+  },
+  {
+    glyph: "\u0597",
+    nameEn: "Reviạ",
+    nameHe: "רְבִ֗יעַ",
+  },
+  {
+    glyph: "\u0598",
+    nameEn: "Zarqa",
+    nameHe: "זַרְקָא֮",
+  },
+  {
+    glyph: "\u0599",
+    nameEn: "Pashṭa",
+    nameHe: "פַּשְׁטָא֙",
+  },
+  {
+    glyph: "\u059a",
+    nameEn: "Yetiv",
+    nameHe: "יְ֚תִיב",
+  },
+  {
+    glyph: "\u059b",
+    nameEn: "Tevir",
+    nameHe: "תְּבִ֛יר",
+  },
+  {
+    glyph: "\u059c",
+    nameEn: "Azla Geresh",
+    nameHe: "אַזְלָא-גֵּ֜רֵשׁ",
+  },
+  {
+    glyph: "\u059d",
+    nameEn: "Geresh Muqdam",
+    nameHe: "קַדְמָ֨א-גרש",
+  },
+  {
+    glyph: "\u059e",
+    nameEn: "Gershayim",
+    nameHe: "גֵּרְשַׁ֞יִם",
+  },
+  {
+    glyph: "\u059f",
+    nameEn: "Qarney Farah",
+    nameHe: "קַרְנֵי פָרָ֟ה",
+  },
+  {
+    glyph: "\u05a0",
+    nameEn: "Telisha Gedolah",
+    nameHe: "תְּ֠לִישָא גְדוֹלָה",
+  },
+  {
+    glyph: "\u05a1",
+    nameEn: "Pazer",
+    nameHe: "פָּזֵ֡ר",
+  },
+  {
+    glyph: "\u05a2",
+    nameEn: "Etnaḥ Hafukh",
+    nameHe: "אֶתְנָ֢ח הָפוּךְ",
+  },
+  {
+    glyph: "\u05a3",
+    nameEn: "Munnaḥ",
+    nameHe: "מֻנַּ֣ח",
+  },
+  {
+    glyph: "\u05a4",
+    nameEn: "Mahpakh",
+    nameHe: "מַהְפַּ֤ך",
+  },
+  {
+    glyph: "\u05a5",
+    nameEn: "Merkha",
+    nameHe: "מֵרְכָ֥א",
+  },
+  {
+    glyph: "\u05a6",
+    nameEn: "Merkha Kfula",
+    nameHe: "מֵרְכָא כְּפוּלָ֦ה",
+  },
+  {
+    glyph: "\u05a7",
+    nameEn: "Darga",
+    nameHe: "דַּרְגָּ֧א",
+  },
+  {
+    glyph: "\u05a8",
+    nameEn: "Qadma",
+    nameHe: "קַדְמָ֨א",
+  },
+  {
+    glyph: "\u05a9",
+    nameEn: "Telisha Qeṭannah",
+    nameHe: "תְּלִישָא קְטַנָּה֩",
+  },
+  {
+    glyph: "\u05aa",
+    nameEn: "Yare'aḥ Ben Yomo",
+    nameHe: "יָרֵחַ בֶּן יוֹמ֪וֹ",
+  },
+  {
+    glyph: "\u05ab",
+    nameEn: "Ọleh",
+    nameHe: "עוֺלֶ֫ה",
+  },
+  {
+    glyph: "\u05ac",
+    nameEn: "Ịluy",
+    nameHe: "עִלּוּי֬",
+  },
+  {
+    glyph: "\u05ad",
+    nameEn: "Deḥi",
+    nameHe: "דְּ֭חִי",
+  },
+  {
+    glyph: "\u05ae",
+    nameEn: "Tsinnorit",
+    nameHe: "צִנּוֹרִת֘",
+  },
+  {
+    glyph: "\u05af",
+    nameEn: "Masorah Circle",
+    nameHe: "עִגּוּל מָסוֹרָה",
+  },
+];
+
 const clickHandler = (vkb: VirtualKeyboard) => (ev: Event) => {
   const glyph = (ev.target as HTMLButtonElement).innerText;
   vkb.dispatchEvent(new CustomEvent("virtualpress", { detail: glyph }));
@@ -262,6 +420,16 @@ const vkbLayout = [
             nameEn: "Geresh",
           },
         ],
+      },
+    ],
+  },
+  {
+    id: "taamim",
+    sets: [
+      {
+        title: "Cantillation",
+        render: glyphButton,
+        data: taamim,
       },
     ],
   },

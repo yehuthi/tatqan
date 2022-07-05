@@ -35,7 +35,8 @@ fieldset > * {
   display: flex;
 }
 
-.niqqud button::before {
+.niqqud button::before,
+.taamim button::before {
   content: "א";
 }
 
