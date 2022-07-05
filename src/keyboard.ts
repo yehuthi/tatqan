@@ -139,6 +139,7 @@ const glyphSofitButton = (
   const { sofit } = entry;
   if (sofit) {
     const buttonGroup = document.createElement("div");
+    buttonGroup.className = "sofitGroup";
     const sofitButton = glyphButton(vkb, { glyph: sofit });
     buttonGroup.append(nonSofitButton, sofitButton);
     return buttonGroup;

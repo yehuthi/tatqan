@@ -24,6 +24,7 @@ fieldset {
   display: flex;
   flex-wrap: wrap;
   padding: 0.5em;
+  gap: 0.1em;
 }
 
 fieldset > * {
@@ -36,4 +37,34 @@ fieldset > * {
 
 .niqqud button::before {
   content: "א";
+}
+
+button {
+  background: #f1d360;
+  $size: 4ch;
+  width: $size;
+  height: $size;
+  border: 1px solid #0086be;
+  border-radius: 3px;
+}
+
+.sofitGroup {
+  :first-child {
+    border-inline-start: 1px solid #0086be;
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+  }
+  :last-child {
+    border-inline-end: 1px solid #0086be;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+  button {
+    border-left: 0;
+    border-right: 0;
+  }
+
+  :first-child {
+    border-inline-end: dashed 1px #0086be77;
+  }
 }
