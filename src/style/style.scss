@@ -1,5 +1,6 @@
 @use "./reset.scss";
 @use "./ufont.scss";
+@use "./theme.scss";
 
 * {
   box-sizing: border-box;
@@ -21,6 +22,14 @@ body {
   min-height: 3em;
   font-family: u0400;
   font-size: inherit;
+  border-color: theme.$color-accent;
+  outline: none;
+  border-radius: 0.25em;
+  padding: 0.5em;
+}
+
+#source:focus {
+  border-color: theme.$color-primary;
 }
 
 #output {
