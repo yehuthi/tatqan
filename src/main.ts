@@ -1,4 +1,3 @@
-import "./style/style.scss";
 import "./keyboard";
 import he2paleo from "he2paleo";
 
