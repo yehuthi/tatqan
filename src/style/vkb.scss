@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "u0400";
+  src: url("u0400.eot");
+  font-weight: normal;
+  font-style: normal;
+}
+button {
+  font-family: u0400;
+  font-size: 1em;
+  width: 2ch;
+  padding: 0;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+:host > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+div > * {
+  flex-grow: 1;
+}
+
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5em;
+}
+
+fieldset > * {
+  flex-grow: 1;
+}
+
+.letters fieldset > div {
+  display: flex;
+}
+
+.niqqud button::before {
+  content: "\00A0";
+}

@@ -18,6 +18,6 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -cw",
-    "clean": "rimraf dist"
+    "clean": "rimraf build"
   }
 }

@@ -236,54 +236,7 @@ class VirtualKeyboard extends HTMLElement {
     super();
 
     const root = this.attachShadow({ mode: "open" });
-
-    root.appendChild(
-      (() => {
-        const style = document.createElement("style");
-        style.innerHTML = `
-@font-face {
-  font-family: "u0400";
-  src: url("u0400.eot");
-  font-weight: normal;
-  font-style: normal;
-}
-button {
-  font-family: u0400;
-  font-size: 1em;
-  width: 2ch;
-  padding: 0;
-}
-
-:host {
-  display: flex;
-  flex-direction: column;
-}
-
-:host > div {
-  display: flex;
-  flex-wrap: wrap;
-}
-div > * { flex-grow: 1; }
-
-fieldset {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0.5em;
-}
-
-fieldset > * { flex-grow: 1; }
-
-.letters fieldset > div {
-  display: flex;
-}
-
-.niqqud button::before {
-  content: '\u00A0';
-}
-`;
-        return style;
-      })()
-    );
+    root.innerHTML = `<link rel="stylesheet" href="vkb.css">`;
     vkbLayout.forEach((group) => {
       const groupRoot = document.createElement("div");
       groupRoot.className = group.id;
