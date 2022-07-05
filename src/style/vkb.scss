@@ -1,9 +1,5 @@
-@font-face {
-  font-family: "u0400";
-  src: url("u0400.eot");
-  font-weight: normal;
-  font-style: normal;
-}
+@use "./ufont.scss";
+
 button {
   font-family: u0400;
   font-size: 1em;
