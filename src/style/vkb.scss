@@ -1,5 +1,6 @@
 @use "./ufont.scss";
 @use "./theme.scss";
+@use "sass:color";
 
 button {
   font-family: u0400;
@@ -43,6 +44,10 @@ fieldset > * {
 
 button {
   background: theme.$color-primary;
+  &:hover {
+    background: color.adjust(theme.$color-primary, $lightness: -20%);
+  }
+  cursor: pointer;
   $size: 4ch;
   width: $size;
   height: $size;
