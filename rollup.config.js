@@ -5,6 +5,7 @@ import copy from "rollup-plugin-copy-watch";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import closure from "@ampproject/rollup-plugin-closure-compiler";
+import { minifyHTML } from "rollup-plugin-minify-html";
 
 const temp_dir = `build/tmp`;
 const dist_dir = `build/dist`;
@@ -24,6 +25,19 @@ export default [
       copy({
         targets: [{ src: "static/**/*", dest: dist_dir }],
         watch: "static",
+      }),
+      minifyHTML({
+        targets: [
+          {
+            src: "src/index.html",
+            dest: `${dist_dir}/index.html`,
+            minifierOptions: {
+              collapseWhitespace: true,
+              minifyCSS: true,
+              minifyJS: true,
+            },
+          },
+        ],
       }),
       closure({
         compilation_level: "ADVANCED",
