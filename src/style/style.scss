@@ -24,19 +24,30 @@ body {
   font-size: inherit;
   border-color: theme.$color-accent;
   outline: none;
-  border-radius: 0.25em;
-  padding: 0.5em;
 }
 
 #source:focus {
   border-color: theme.$color-primary;
 }
 
-#output {
-  margin-top: 1em;
-  display: block;
-}
-
 h1 {
   font-family: "Noto Sans Phoenician", "Noto Rashi Hebrew", "Noto Sans Display";
+}
+
+#output {
+  color: theme.$color-accent;
+  background: theme.$color-primary;
+  border: 1px solid theme.$color-accent;
+  display: block;
+  min-height: 1.5em;
+}
+
+#outputSection {
+  margin: 1em 0;
+}
+
+#source,
+#output {
+  border-radius: 0.25em;
+  padding: 0.5em;
 }
