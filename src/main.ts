@@ -27,3 +27,7 @@ source.addEventListener("input", () => {
 });
 
 if (!isMobile({ tablet: true })) setTimeout(() => source.focus(), 0);
+
+(document.getElementById("copyButton") as HTMLButtonElement).onclick = () => {
+  navigator.clipboard.writeText(output.textContent ?? "");
+};
