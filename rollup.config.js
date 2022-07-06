@@ -4,6 +4,7 @@ import scss from "rollup-plugin-scss";
 import copy from "rollup-plugin-copy-watch";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import closure from "@ampproject/rollup-plugin-closure-compiler";
 
 const temp_dir = `build/tmp`;
 const dist_dir = `build/dist`;
@@ -23,6 +24,9 @@ export default [
       copy({
         targets: [{ src: "static/**/*", dest: dist_dir }],
         watch: "static",
+      }),
+      closure({
+        compilation_level: "ADVANCED",
       }),
     ],
   },
