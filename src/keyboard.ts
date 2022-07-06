@@ -396,6 +396,23 @@ const vkbLayout = [
     id: "punctuation",
     sets: [
       {
+        title: "Diacritics",
+        render: glyphButton,
+        data: [
+          {
+            nameEn: "Rafeh",
+            nameHe: "רָפֶֿה",
+            glyph: "\u05BF",
+          },
+
+          {
+            nameEn: "Meteg",
+            nameHe: "מֶתֶג",
+            glyph: "\u05BD",
+          },
+        ],
+      },
+      {
         title: "Punctuation",
         render: glyphButton,
         data: [
