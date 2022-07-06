@@ -5,6 +5,7 @@
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
+    "gh-pages": "^4.0.0",
     "he2paleo": "^0.1.0",
     "is-mobile": "^3.1.1",
     "rimraf": "^3.0.2",
@@ -19,6 +20,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -cw",
-    "clean": "rimraf build"
+    "clean": "rimraf build",
+    "deploy": "gh-pages -fd build/dist"
   }
 }
