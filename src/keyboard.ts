@@ -355,7 +355,16 @@ const glyphSofitButton = (vkb: VirtualKeyboard, glyph: Glyph): HTMLElement => {
   }
 };
 
-const vkbLayout = [
+type Layout = {
+  id: string;
+  sets: {
+    title: string;
+    data: Glyph[];
+    render: (vkb: VirtualKeyboard, glyph: Glyph) => HTMLElement;
+  }[];
+}[];
+
+const vkbLayout: Layout = [
   {
     id: "letters",
     sets: [
@@ -520,7 +529,7 @@ const vkbLayout = [
       },
     ],
   },
-] as const;
+];
 
 class VirtualKeyboard extends HTMLElement {
   constructor() {
