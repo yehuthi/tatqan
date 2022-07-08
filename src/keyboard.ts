@@ -1,6 +1,6 @@
 interface Glyph {
   glyph: string;
-  nameEn?: string;
+  nameEn: string;
   nameHe?: string;
   alt?: Glyph[];
 }
@@ -62,6 +62,7 @@ const letters: Glyph[] = [
     nameHe: "כַף",
     alt: [
       {
+        nameEn: "Kaf Sofit",
         glyph: "ך",
       },
     ],
@@ -75,13 +76,23 @@ const letters: Glyph[] = [
     glyph: "מ",
     nameEn: "Mem",
     nameHe: "מֵם",
-    alt: [{ glyph: "ם" }],
+    alt: [
+      {
+        nameEn: "Mem Sofit",
+        glyph: "ם",
+      },
+    ],
   },
   {
     glyph: "נ",
     nameEn: "Nun",
     nameHe: "נוּן",
-    alt: [{ glyph: "ן" }],
+    alt: [
+      {
+        nameEn: "Nun Sofit",
+        glyph: "ן",
+      },
+    ],
   },
   {
     glyph: "ס",
@@ -97,13 +108,23 @@ const letters: Glyph[] = [
     glyph: "פ",
     nameEn: "Pe",
     nameHe: "פֵה",
-    alt: [{ glyph: "ף" }],
+    alt: [
+      {
+        nameEn: "Pe Sofit",
+        glyph: "ף",
+      },
+    ],
   },
   {
     glyph: "צ",
     nameEn: "Ṣadi",
     nameHe: "צַדִי",
-    alt: [{ glyph: "ץ" }],
+    alt: [
+      {
+        nameEn: "Ṣadi Sofit",
+        glyph: "ץ",
+      },
+    ],
   },
   {
     glyph: "ק",
@@ -342,37 +363,51 @@ const vkbLayout = [
     sets: [
       {
         title: "A",
-        data: [{ glyph: "\u05B8" }, { glyph: "\u05B7" }, { glyph: "\u05B2" }],
+        data: [
+          { nameEn: "Qamaṣ", glyph: "\u05B8" },
+          { nameEn: "Pataḥ", glyph: "\u05B7" },
+          { nameEn: "Ḥaṭaf Pataḥ", glyph: "\u05B2" },
+        ],
         render: glyphButton,
       },
       {
         title: "E",
-        data: [{ glyph: "\u05B5" }, { glyph: "\u05B6" }, { glyph: "\u05B1" }],
+        data: [
+          { nameEn: "Ṣere", glyph: "\u05B5" },
+          { nameEn: "Segol", glyph: "\u05B6" },
+          { nameEn: "Ḥaṭaf Segol", glyph: "\u05B1" },
+        ],
         render: glyphButton,
       },
       {
         title: "I",
-        data: [{ glyph: "\u05B4\u05D9" }, { glyph: "\u05B4" }],
+        data: [
+          { nameEn: "Ḥiriq Male", glyph: "\u05B4\u05D9" },
+          { nameEn: "Ḥiriq", glyph: "\u05B4" },
+        ],
         render: glyphButton,
       },
       {
         title: "O",
         data: [
-          { glyph: "\u05B9" },
-          { glyph: "ו\u05BA" },
-          { glyph: "\u05C7" },
-          { glyph: "\u05B3" },
+          { nameEn: "Ḥolam", glyph: "\u05B9" },
+          // { nameEn: "Waw Ḥolam", glyph: "ו\u05BA" },
+          { nameEn: "Qamaṣ Qaṭan", glyph: "\u05C7" },
+          { nameEn: "Ḥaṭaf Qamaṣ", glyph: "\u05B3" },
         ],
         render: glyphButton,
       },
       {
         title: "U",
-        data: [{ glyph: "ו\u05BC" }, { glyph: "\u05BB" }],
+        data: [
+          { nameEn: "Shuruq", glyph: "ו\u05BC" },
+          { nameEn: "Qubuṣ", glyph: "\u05BB" },
+        ],
         render: glyphButton,
       },
       {
         title: "-",
-        data: [{ glyph: "\u05B0" }],
+        data: [{ nameEn: "Shwa", glyph: "\u05B0" }],
         render: glyphButton,
       },
     ],
