@@ -35,6 +35,10 @@ const letters: Glyph[] = [
     glyph: "ו",
     nameEn: "Waw",
     nameHe: "וָו",
+    alt: [
+      { nameEn: "Waw Ḥolam", glyph: "\u05D5\u05BA" },
+      { nameEn: "Shuruq", glyph: "\u05D5\u05BC" },
+    ],
   },
   {
     glyph: "ז",
@@ -390,8 +394,11 @@ const vkbLayout = [
       {
         title: "O",
         data: [
-          { nameEn: "Ḥolam", glyph: "\u05B9" },
-          // { nameEn: "Waw Ḥolam", glyph: "ו\u05BA" },
+          { nameEn: "Waw Ḥolam", glyph: "\u05D5\u05BA" },
+          {
+            nameEn: "Ḥolam",
+            glyph: "\u05B9",
+          },
           { nameEn: "Qamaṣ Qaṭan", glyph: "\u05C7" },
           { nameEn: "Ḥaṭaf Qamaṣ", glyph: "\u05B3" },
         ],
@@ -400,7 +407,7 @@ const vkbLayout = [
       {
         title: "U",
         data: [
-          { nameEn: "Shuruq", glyph: "ו\u05BC" },
+          { nameEn: "Shuruq", glyph: "\u05D5\u05BC" },
           { nameEn: "Qubuṣ", glyph: "\u05BB" },
         ],
         render: glyphButton,
