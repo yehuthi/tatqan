@@ -1,4 +1,12 @@
-const letters = [
+interface Glyph {
+  glyph: string;
+  nameEn?: string;
+  nameHe?: string;
+  alt?: Glyph[];
+  sofit?: string;
+}
+
+const letters: Glyph[] = [
   {
     glyph: "א",
     nameEn: "Alef",
@@ -128,7 +136,7 @@ const letters = [
   },
 ];
 
-const taamim = [
+const taamim: Glyph[] = [
   {
     glyph: "\u0591",
     nameEn: "Etnaḥta",
@@ -291,22 +299,16 @@ const clickHandler = (vkb: VirtualKeyboard) => (ev: Event) => {
   vkb.dispatchEvent(new CustomEvent("virtualpress", { detail: glyph }));
 };
 
-const glyphButton = (
-  vkb: VirtualKeyboard,
-  { glyph }: { glyph: string }
-): HTMLElement => {
+const glyphButton = (vkb: VirtualKeyboard, { glyph }: Glyph): HTMLElement => {
   const button = document.createElement("button");
   button.innerText = glyph;
   button.onclick = clickHandler(vkb);
   return button;
 };
 
-const glyphSofitButton = (
-  vkb: VirtualKeyboard,
-  entry: { glyph: string; sofit?: string; alt?: { glyph: string }[] }
-): HTMLElement => {
-  const mainGlyphButton = glyphButton(vkb, entry);
-  const { sofit, alt } = entry;
+const glyphSofitButton = (vkb: VirtualKeyboard, glyph: Glyph): HTMLElement => {
+  const mainGlyphButton = glyphButton(vkb, glyph);
+  const { sofit, alt } = glyph;
   if (sofit || alt) {
     const buttonGroup = document.createElement("div");
     buttonGroup.className = "buttonGroup";
