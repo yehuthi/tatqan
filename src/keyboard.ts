@@ -3,7 +3,6 @@ interface Glyph {
   nameEn?: string;
   nameHe?: string;
   alt?: Glyph[];
-  sofit?: string;
 }
 
 const letters: Glyph[] = [
@@ -61,7 +60,11 @@ const letters: Glyph[] = [
     glyph: "כ",
     nameEn: "Kaf",
     nameHe: "כַף",
-    sofit: "ך",
+    alt: [
+      {
+        glyph: "ך",
+      },
+    ],
   },
   {
     glyph: "ל",
@@ -72,13 +75,13 @@ const letters: Glyph[] = [
     glyph: "מ",
     nameEn: "Mem",
     nameHe: "מֵם",
-    sofit: "ם",
+    alt: [{ glyph: "ם" }],
   },
   {
     glyph: "נ",
     nameEn: "Nun",
     nameHe: "נוּן",
-    sofit: "ן",
+    alt: [{ glyph: "ן" }],
   },
   {
     glyph: "ס",
@@ -94,13 +97,13 @@ const letters: Glyph[] = [
     glyph: "פ",
     nameEn: "Pe",
     nameHe: "פֵה",
-    sofit: "ף",
+    alt: [{ glyph: "ף" }],
   },
   {
     glyph: "צ",
     nameEn: "Ṣadi",
     nameHe: "צַדִי",
-    sofit: "ץ",
+    alt: [{ glyph: "ץ" }],
   },
   {
     glyph: "ק",
@@ -308,12 +311,10 @@ const glyphButton = (vkb: VirtualKeyboard, { glyph }: Glyph): HTMLElement => {
 
 const glyphSofitButton = (vkb: VirtualKeyboard, glyph: Glyph): HTMLElement => {
   const mainGlyphButton = glyphButton(vkb, glyph);
-  const { sofit, alt } = glyph;
-  if (sofit || alt) {
+  const { alt } = glyph;
+  if (alt) {
     const buttonGroup = document.createElement("div");
     buttonGroup.className = "buttonGroup";
-    if (sofit)
-      buttonGroup.append(mainGlyphButton, glyphButton(vkb, { glyph: sofit }));
     if (alt)
       buttonGroup.append(
         mainGlyphButton,
