@@ -327,10 +327,14 @@ const clickHandler = (vkb: VirtualKeyboard) => (ev: Event) => {
   vkb.dispatchEvent(new CustomEvent("virtualpress", { detail: glyph }));
 };
 
-const glyphButton = (vkb: VirtualKeyboard, { glyph }: Glyph): HTMLElement => {
+const glyphButton = (
+  vkb: VirtualKeyboard,
+  { glyph, nameEn }: Glyph
+): HTMLElement => {
   const button = document.createElement("button");
   button.innerText = glyph;
   button.onclick = clickHandler(vkb);
+  button.title = nameEn;
   return button;
 };
 
