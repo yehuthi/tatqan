@@ -436,6 +436,10 @@ const vkbLayout = [
             glyph: "\u05F3",
             nameEn: "Geresh",
           },
+          {
+            glyph: "\u00B7",
+            nameEn: "Interpunct",
+          },
         ],
       },
     ],
