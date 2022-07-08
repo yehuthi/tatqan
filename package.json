@@ -10,8 +10,7 @@
     "he2paleo": "^0.1.0",
     "is-mobile": "^3.1.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.75.7",
-    "rollup-plugin-copy-watch": "^0.0.1",
+    "rollup": "^2.76.0",
     "rollup-plugin-minify-html": "^0.1.2",
     "rollup-plugin-scss": "3",
     "rollup-plugin-terser": "^7.0.2",
@@ -22,7 +21,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -cw",
-    "clean": "rimraf build",
+    "clean": "rimraf \"dist/*.{html,css,js}\"",
     "deploy": "gh-pages -fd build/dist"
   }
 }

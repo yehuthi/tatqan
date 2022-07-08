@@ -1,14 +1,15 @@
 import typescript from "@rollup/plugin-typescript";
 import { terser } from "rollup-plugin-terser";
 import scss from "rollup-plugin-scss";
-import copy from "rollup-plugin-copy-watch";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import closure from "@ampproject/rollup-plugin-closure-compiler";
 import { minifyHTML } from "rollup-plugin-minify-html";
+import * as os from "os";
+import * as path from "path";
 
-const temp_dir = `build/tmp`;
-const dist_dir = `build/dist`;
+const temp_dir = path.join(os.tmpdir(), "tatqan_build");
+const dist_dir = `dist`;
 
 export default [
   {
@@ -22,10 +23,6 @@ export default [
       nodeResolve(),
       commonjs(),
       typescript(),
-      copy({
-        targets: [{ src: "static/**/*", dest: dist_dir }],
-        watch: "static",
-      }),
       minifyHTML({
         targets: [
           {
