@@ -108,6 +108,18 @@ const letters = [
     glyph: "ש",
     nameEn: "Shin",
     nameHe: "שִׁין",
+    alt: [
+      {
+        glyph: "\u05E9\u05C1",
+        nameEn: "Shin",
+        nameHe: "שִׁין",
+      },
+      {
+        glyph: "\u05E9\u05C2",
+        nameEn: "Sin",
+        nameHe: "שִׂין",
+      },
+    ],
   },
   {
     glyph: "ת",
@@ -291,18 +303,23 @@ const glyphButton = (
 
 const glyphSofitButton = (
   vkb: VirtualKeyboard,
-  entry: { glyph: string; sofit?: string }
+  entry: { glyph: string; sofit?: string; alt?: { glyph: string }[] }
 ): HTMLElement => {
-  const nonSofitButton = glyphButton(vkb, entry);
-  const { sofit } = entry;
-  if (sofit) {
+  const mainGlyphButton = glyphButton(vkb, entry);
+  const { sofit, alt } = entry;
+  if (sofit || alt) {
     const buttonGroup = document.createElement("div");
-    buttonGroup.className = "sofitGroup";
-    const sofitButton = glyphButton(vkb, { glyph: sofit });
-    buttonGroup.append(nonSofitButton, sofitButton);
+    buttonGroup.className = "buttonGroup";
+    if (sofit)
+      buttonGroup.append(mainGlyphButton, glyphButton(vkb, { glyph: sofit }));
+    if (alt)
+      buttonGroup.append(
+        mainGlyphButton,
+        ...alt.map((entry) => glyphButton(vkb, entry))
+      );
     return buttonGroup;
   } else {
-    return nonSofitButton;
+    return mainGlyphButton;
   }
 };
 
