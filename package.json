@@ -22,6 +22,6 @@
     "build": "rollup -c",
     "dev": "rollup -cw",
     "clean": "rimraf \"dist/*.{html,css,js}\"",
-    "deploy": "gh-pages -fd build/dist"
+    "deploy": "yarn run clean && yarn run build && gh-pages -fd dist"
   }
 }
