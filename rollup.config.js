@@ -13,7 +13,7 @@ const dist_dir = `dist`;
 
 export default [
   {
-    input: "src/main.ts",
+    input: "src/index.ts",
     output: {
       file: `${dist_dir}/tatqan.js`,
       format: "cjs",
