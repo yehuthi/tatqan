@@ -2,10 +2,9 @@ interface Glyph {
   glyph: string;
   nameEn: string;
   nameHe?: string;
-  alt?: Glyph[];
 }
 
-const letters: Glyph[] = [
+const letters: (Glyph | Glyph[])[] = [
   {
     glyph: "א",
     nameEn: "Alef",
@@ -31,15 +30,15 @@ const letters: Glyph[] = [
     nameEn: "He",
     nameHe: "הֵא",
   },
-  {
-    glyph: "ו",
-    nameEn: "Waw",
-    nameHe: "וָו",
-    alt: [
-      { nameEn: "Waw Ḥolam", glyph: "\u05D5\u05BA" },
-      { nameEn: "Shuruq", glyph: "\u05D5\u05BC" },
-    ],
-  },
+  [
+    {
+      glyph: "ו",
+      nameEn: "Waw",
+      nameHe: "וָו",
+    },
+    { nameEn: "Waw Ḥolam", glyph: "\u05D5\u05BA" },
+    { nameEn: "Shuruq", glyph: "\u05D5\u05BC" },
+  ],
   {
     glyph: "ז",
     nameEn: "Zayin",
@@ -60,44 +59,44 @@ const letters: Glyph[] = [
     nameEn: "Yod",
     nameHe: "יוֹד",
   },
-  {
-    glyph: "כ",
-    nameEn: "Kaf",
-    nameHe: "כַף",
-    alt: [
-      {
-        nameEn: "Kaf Sofit",
-        glyph: "ך",
-      },
-    ],
-  },
+  [
+    {
+      glyph: "כ",
+      nameEn: "Kaf",
+      nameHe: "כַף",
+    },
+    {
+      nameEn: "Kaf Sofit",
+      glyph: "ך",
+    },
+  ],
   {
     glyph: "ל",
     nameEn: "Lamed",
     nameHe: "לָמֶד",
   },
-  {
-    glyph: "מ",
-    nameEn: "Mem",
-    nameHe: "מֵם",
-    alt: [
-      {
-        nameEn: "Mem Sofit",
-        glyph: "ם",
-      },
-    ],
-  },
-  {
-    glyph: "נ",
-    nameEn: "Nun",
-    nameHe: "נוּן",
-    alt: [
-      {
-        nameEn: "Nun Sofit",
-        glyph: "ן",
-      },
-    ],
-  },
+  [
+    {
+      glyph: "מ",
+      nameEn: "Mem",
+      nameHe: "מֵם",
+    },
+    {
+      nameEn: "Mem Sofit",
+      glyph: "ם",
+    },
+  ],
+  [
+    {
+      glyph: "נ",
+      nameEn: "Nun",
+      nameHe: "נוּן",
+    },
+    {
+      nameEn: "Nun Sofit",
+      glyph: "ן",
+    },
+  ],
   {
     glyph: "ס",
     nameEn: "Samekh",
@@ -108,28 +107,28 @@ const letters: Glyph[] = [
     nameEn: "ʕayin",
     nameHe: "עַיִן",
   },
-  {
-    glyph: "פ",
-    nameEn: "Pe",
-    nameHe: "פֵה",
-    alt: [
-      {
-        nameEn: "Pe Sofit",
-        glyph: "ף",
-      },
-    ],
-  },
-  {
-    glyph: "צ",
-    nameEn: "Ṣadi",
-    nameHe: "צַדִי",
-    alt: [
-      {
-        nameEn: "Ṣadi Sofit",
-        glyph: "ץ",
-      },
-    ],
-  },
+  [
+    {
+      glyph: "פ",
+      nameEn: "Pe",
+      nameHe: "פֵה",
+    },
+    {
+      nameEn: "Pe Sofit",
+      glyph: "ף",
+    },
+  ],
+  [
+    {
+      glyph: "צ",
+      nameEn: "Ṣadi",
+      nameHe: "צַדִי",
+    },
+    {
+      nameEn: "Ṣadi Sofit",
+      glyph: "ץ",
+    },
+  ],
   {
     glyph: "ק",
     nameEn: "Qof",
@@ -140,23 +139,23 @@ const letters: Glyph[] = [
     nameEn: "Resh",
     nameHe: "רֵישׁ",
   },
-  {
-    glyph: "ש",
-    nameEn: "Shin",
-    nameHe: "שִׁין",
-    alt: [
-      {
-        glyph: "\u05E9\u05C1",
-        nameEn: "Shin",
-        nameHe: "שִׁין",
-      },
-      {
-        glyph: "\u05E9\u05C2",
-        nameEn: "Sin",
-        nameHe: "שִׂין",
-      },
-    ],
-  },
+  [
+    {
+      glyph: "ש",
+      nameEn: "Shin",
+      nameHe: "שִׁין",
+    },
+    {
+      glyph: "\u05E9\u05C1",
+      nameEn: "Shin",
+      nameHe: "שִׁין",
+    },
+    {
+      glyph: "\u05E9\u05C2",
+      nameEn: "Sin",
+      nameHe: "שִׂין",
+    },
+  ],
   {
     glyph: "ת",
     nameEn: "Taw",
@@ -338,20 +337,17 @@ const glyphButton = (
   return button;
 };
 
-const glyphSofitButton = (vkb: VirtualKeyboard, glyph: Glyph): HTMLElement => {
-  const mainGlyphButton = glyphButton(vkb, glyph);
-  const { alt } = glyph;
-  if (alt) {
+const glyphsRender = (
+  vkb: VirtualKeyboard,
+  glyph: Glyph | Glyph[]
+): HTMLElement => {
+  if (Array.isArray(glyph)) {
     const buttonGroup = document.createElement("div");
     buttonGroup.className = "buttonGroup";
-    if (alt)
-      buttonGroup.append(
-        mainGlyphButton,
-        ...alt.map((entry) => glyphButton(vkb, entry))
-      );
+    buttonGroup.append(...glyph.map((entry) => glyphButton(vkb, entry)));
     return buttonGroup;
   } else {
-    return mainGlyphButton;
+    return glyphButton(vkb, glyph);
   }
 };
 
@@ -359,8 +355,7 @@ type Layout = {
   id: string;
   sets: {
     title: string;
-    data: Glyph[];
-    render: (vkb: VirtualKeyboard, glyph: Glyph) => HTMLElement;
+    data: (Glyph | Glyph[])[];
   }[];
 }[];
 
@@ -371,7 +366,6 @@ const vkbLayout: Layout = [
       {
         title: "Letters",
         data: letters,
-        render: glyphSofitButton,
       },
     ],
   },
@@ -385,7 +379,6 @@ const vkbLayout: Layout = [
           { nameEn: "Pataḥ", glyph: "\u05B7" },
           { nameEn: "Ḥaṭaf Pataḥ", glyph: "\u05B2" },
         ],
-        render: glyphButton,
       },
       {
         title: "E",
@@ -394,7 +387,6 @@ const vkbLayout: Layout = [
           { nameEn: "Segol", glyph: "\u05B6" },
           { nameEn: "Ḥaṭaf Segol", glyph: "\u05B1" },
         ],
-        render: glyphButton,
       },
       {
         title: "I",
@@ -402,7 +394,6 @@ const vkbLayout: Layout = [
           { nameEn: "Ḥiriq Male", glyph: "\u05B4\u05D9" },
           { nameEn: "Ḥiriq", glyph: "\u05B4" },
         ],
-        render: glyphButton,
       },
       {
         title: "O",
@@ -415,7 +406,6 @@ const vkbLayout: Layout = [
           { nameEn: "Qamaṣ Qaṭan", glyph: "\u05C7" },
           { nameEn: "Ḥaṭaf Qamaṣ", glyph: "\u05B3" },
         ],
-        render: glyphButton,
       },
       {
         title: "U",
@@ -423,12 +413,10 @@ const vkbLayout: Layout = [
           { nameEn: "Shuruq", glyph: "\u05D5\u05BC" },
           { nameEn: "Qubuṣ", glyph: "\u05BB" },
         ],
-        render: glyphButton,
       },
       {
         title: "-",
         data: [{ nameEn: "Shwa", glyph: "\u05B0" }],
-        render: glyphButton,
       },
     ],
   },
@@ -463,7 +451,6 @@ const vkbLayout: Layout = [
             nameEn: "Waw Waw Ligature",
           },
         ],
-        render: glyphButton,
       },
     ],
   },
@@ -472,7 +459,6 @@ const vkbLayout: Layout = [
     sets: [
       {
         title: "Diacritics",
-        render: glyphButton,
         data: [
           {
             nameEn: "Rafeh",
@@ -489,7 +475,6 @@ const vkbLayout: Layout = [
       },
       {
         title: "Punctuation",
-        render: glyphButton,
         data: [
           {
             glyph: "\u05C3",
@@ -524,7 +509,6 @@ const vkbLayout: Layout = [
     sets: [
       {
         title: "Cantillation",
-        render: glyphButton,
         data: taamim,
       },
     ],
@@ -545,7 +529,7 @@ class VirtualKeyboard extends HTMLElement {
         setRoot.dir = "rtl";
         setRoot.innerHTML = `<legend>${set.title}</legend>`;
         set.data.forEach((entry) => {
-          setRoot.appendChild(set.render(this, entry));
+          setRoot.appendChild(glyphsRender(this, entry));
         });
         groupRoot.appendChild(setRoot);
       });
