@@ -321,6 +321,130 @@ const taamim: Glyph[] = [
   },
 ];
 
+const laaz_het: (Glyph | Glyph[])[] = [
+  [
+    {
+      glyph: "Ḥ",
+      nameEn: "Ḥet Uppercase",
+    },
+    {
+      glyph: "ḥ",
+      nameEn: "Ḥet Lowercase",
+    },
+  ],
+  [
+    {
+      glyph: "ح",
+      nameEn: "Ḥa (Arabic)",
+    },
+    {
+      glyph: "7",
+      nameEn: "Ḥa (Arabizi)",
+    },
+  ],
+];
+
+const laaz_ayin: (Glyph | Glyph[])[] = [
+  {
+    glyph: "ʕ",
+    nameEn: "Voiced Pharyngeal Fricative",
+  },
+  [
+    {
+      glyph: "ع",
+      nameEn: "ʕayin (Arabic)",
+    },
+    {
+      glyph: "3",
+      nameEn: "ʕayin (Arabizi)",
+    },
+  ],
+];
+
+const laaz_tet: (Glyph | Glyph[])[] = [
+  [
+    {
+      glyph: "Ṭ",
+      nameEn: "Ṭet Uppercase",
+    },
+    {
+      glyph: "ṭ",
+      nameEn: "Ṭet lowercase",
+    },
+  ],
+  [
+    {
+      glyph: "ط",
+      nameEn: "Ṭa (Arabic)",
+    },
+    {
+      glyph: "6",
+      nameEn: "Ṭa (Arabizi)",
+    },
+  ],
+];
+
+const laaz_sadi: (Glyph | Glyph[])[] = [
+  [
+    {
+      glyph: "Ṣ",
+      nameEn: "Ṣadi uppercase",
+    },
+    {
+      glyph: "ṣ",
+      nameEn: "Ṣadi lowercase",
+    },
+  ],
+  [
+    {
+      glyph: "ص",
+      nameEn: "Ṣād (Arabic)",
+    },
+    {
+      glyph: "6",
+      nameEn: "Ṣād (Arabizi)",
+    },
+  ],
+];
+
+const laaz_glotal: (Glyph | Glyph[])[] = [
+  [
+    {
+      glyph: "ʔ",
+      nameEn: "Glottal Stop",
+    },
+  ],
+  [
+    {
+      glyph: "ء",
+      nameEn: "Hamza (Arabic)",
+    },
+    {
+      glyph: "2",
+      nameEn: "Hamza (Arabizi)",
+    },
+  ],
+];
+
+const laaz_ghimel: (Glyph | Glyph[])[] = [
+  [
+    {
+      glyph: "gh",
+      nameEn: "Ghimel",
+    },
+  ],
+  [
+    {
+      glyph: "غ",
+      nameEn: "Ghayn (Arabic)",
+    },
+    {
+      glyph: "8",
+      nameEn: "Ghayn (Arabizi)",
+    },
+  ],
+];
+
 const clickHandler = (vkb: VirtualKeyboard) => (ev: Event) => {
   const glyph = (ev.target as HTMLButtonElement).innerText;
   vkb.dispatchEvent(new CustomEvent("virtualpress", { detail: glyph }));
@@ -510,6 +634,35 @@ const vkbLayout: Layout = [
       {
         title: "Cantillation",
         data: taamim,
+      },
+    ],
+  },
+  {
+    id: "laaz",
+    sets: [
+      {
+        title: "Ḥet ח",
+        data: laaz_het,
+      },
+      {
+        title: "ʕayin ע",
+        data: laaz_ayin,
+      },
+      {
+        title: "Ṭet ט",
+        data: laaz_tet,
+      },
+      {
+        title: "Ṣadi צ",
+        data: laaz_sadi,
+      },
+      {
+        title: "Glottal Stop א",
+        data: laaz_glotal,
+      },
+      {
+        title: "Ghimel גֿ",
+        data: laaz_ghimel,
       },
     ],
   },
