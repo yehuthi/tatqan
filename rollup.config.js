@@ -16,7 +16,7 @@ export default [
     input: "src/index.ts",
     output: {
       file: `${dist_dir}/tatqan.js`,
-      format: "cjs",
+      format: "esm",
       plugins: [terser()],
     },
     plugins: [
