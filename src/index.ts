@@ -1,6 +1,6 @@
 import "./keyboard";
-import he2paleo from "he2paleo";
 import isMobile from "is-mobile";
+import * as convert from "./convert";
 
 const source = document.getElementById("source") as HTMLTextAreaElement;
 const output = document.getElementById("output") as HTMLOutputElement;
@@ -22,12 +22,44 @@ const output = document.getElementById("output") as HTMLOutputElement;
   }
 );
 
+const conversion: convert.Convert = {
+  input: source,
+  config: {
+    targetScript: undefined,
+  },
+};
+const targetScriptSelect: HTMLSelectElement = document.getElementById(
+  "targetScriptSelect"
+) as HTMLSelectElement;
+convert.targetScripts.forEach((targetScript) => {
+  const option = document.createElement("option");
+  option.innerText = targetScript.nameEn;
+  targetScriptSelect.appendChild(option);
+});
+targetScriptSelect.addEventListener("input", () => {
+  const i = targetScriptSelect.selectedIndex;
+  if (i === 0) {
+    conversion.config.targetScript = undefined;
+    output.innerText = "";
+  } else {
+    conversion.config.targetScript = convert.targetScripts[i - 1];
+    output.innerText = convert.convert(conversion);
+  }
+});
+((i) => {
+  targetScriptSelect.selectedIndex = i;
+  conversion.config.targetScript = convert.targetScripts[i - 1];
+})(1);
 source.addEventListener("input", () => {
-  output.innerText = he2paleo(source.value);
+  if (convert.potent(conversion.config))
+    output.innerText = convert.convert(conversion);
 });
 
 if (!isMobile({ tablet: true })) setTimeout(() => source.focus(), 0);
 
 (document.getElementById("copyButton") as HTMLButtonElement).onclick = () => {
-  navigator.clipboard.writeText(output.textContent ?? "");
+  navigator.clipboard.writeText(
+    (convert.potent(conversion.config) ? output.textContent : source.value) ??
+      ""
+  );
 };
