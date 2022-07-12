@@ -13,7 +13,7 @@ export interface Config {
 }
 
 export function potent(config: Config): boolean {
-  return Boolean(config.targetScript);
+  return Boolean(config.targetScript || config.removeDiacritics !== 0);
 }
 
 export type TargetScript = ((char: string) => string | undefined) & {
