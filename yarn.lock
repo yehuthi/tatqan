@@ -2100,6 +2100,7 @@ __metadata:
     sass: ^1.53.0
     tslib: ^2.4.0
     typescript: ^4.7.4
+    unniqqud: ^0.1.0
   languageName: unknown
   linkType: soft
 
@@ -2193,6 +2194,13 @@ __metadata:
   version: 0.1.2
   resolution: "universalify@npm:0.1.2"
   checksum: 40cdc60f6e61070fe658ca36016a8f4ec216b29bf04a55dce14e3710cc84c7448538ef4dad3728d0bfe29975ccd7bfb5f414c45e7b78883567fb31b246f02dff
+  languageName: node
+  linkType: hard
+
+"unniqqud@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "unniqqud@npm:0.1.0"
+  checksum: 17d9306fe50032fc6ffe552bfc490b5ba68632cdf40df355e5e5fe43a1d393fefd39e419434958c397af65e8bed5c30909ff8aacbfb272c5e6791a14ef93f43d
   languageName: node
   linkType: hard
 

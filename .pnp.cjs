@@ -47,7 +47,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rollup-plugin-terser", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:7.0.2"],\
             ["sass", "npm:1.53.0"],\
             ["tslib", "npm:2.4.0"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"],\
+            ["unniqqud", "npm:0.1.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -2472,7 +2473,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rollup-plugin-terser", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:7.0.2"],\
             ["sass", "npm:1.53.0"],\
             ["tslib", "npm:2.4.0"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"],\
+            ["unniqqud", "npm:0.1.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -2562,6 +2564,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/universalify-npm-0.1.2-9b22d31d2d-40cdc60f6e.zip/node_modules/universalify/",\
           "packageDependencies": [\
             ["universalify", "npm:0.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["unniqqud", [\
+        ["npm:0.1.0", {\
+          "packageLocation": "./.yarn/cache/unniqqud-npm-0.1.0-6331f9f4fe-17d9306fe5.zip/node_modules/unniqqud/",\
+          "packageDependencies": [\
+            ["unniqqud", "npm:0.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\

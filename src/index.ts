@@ -5,6 +5,8 @@ import * as convert from "./convert";
 const source = document.getElementById("source") as HTMLTextAreaElement;
 const output = document.getElementById("output") as HTMLOutputElement;
 
+if (!isMobile({ tablet: true })) setTimeout(() => source.focus(), 0);
+
 (document.getElementById("vkb") as any).addEventListener(
   "virtualpress",
   ({ detail: glyph }: { detail: string }) => {
@@ -26,6 +28,7 @@ const conversion: convert.Convert = {
   input: source,
   config: {
     targetScript: undefined,
+    removeDiacritics: 0,
   },
 };
 const targetScriptSelect: HTMLSelectElement = document.getElementById(
@@ -55,7 +58,27 @@ source.addEventListener("input", () => {
     output.innerText = convert.convert(conversion);
 });
 
-if (!isMobile({ tablet: true })) setTimeout(() => source.focus(), 0);
+(() => {
+  const niqqudToggle = document.getElementById(
+    "niqqudToggle"
+  ) as HTMLInputElement;
+  const taamimToggle = document.getElementById(
+    "taamimToggle"
+  ) as HTMLInputElement;
+
+  niqqudToggle.addEventListener("input", () => {
+    if (niqqudToggle.checked)
+      conversion.config.removeDiacritics |= convert.Diacritics.Niqqud;
+    else conversion.config.removeDiacritics &= ~convert.Diacritics.Niqqud;
+    output.innerText = convert.convert(conversion);
+  });
+  taamimToggle.addEventListener("input", () => {
+    if (taamimToggle.checked)
+      conversion.config.removeDiacritics |= convert.Diacritics.Taamim;
+    else conversion.config.removeDiacritics &= ~convert.Diacritics.Taamim;
+    output.innerText = convert.convert(conversion);
+  });
+})();
 
 (document.getElementById("copyButton") as HTMLButtonElement).onclick = () => {
   navigator.clipboard.writeText(

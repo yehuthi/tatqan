@@ -1,4 +1,5 @@
 import * as he2paleo from "he2paleo";
+import * as unniqqud from "unniqqud";
 
 export interface Convert {
   input: { readonly value: string };
@@ -7,6 +8,7 @@ export interface Convert {
 
 export interface Config {
   targetScript?: TargetScript;
+  removeDiacritics: Diacritics | 0;
 }
 
 export function potent(config: Config): boolean {
@@ -31,11 +33,29 @@ export const targetScripts: readonly TargetScript[] = (() => {
   return [script(he2paleo.char, "Paleo-Hebrew", "עִבְרִי קָדוּם")];
 })();
 
+export const enum Diacritics {
+  Niqqud = 1,
+  Taamim = 1 << 1,
+}
+
+function diacriticTest(diacritics: Diacritics): (char: string) => boolean {
+  return diacritics === (Diacritics.Niqqud | Diacritics.Taamim)
+    ? unniqqud.diacritic
+    : diacritics === Diacritics.Niqqud
+    ? unniqqud.niqqud
+    : unniqqud.taam;
+}
+
 export function convert({ input, config }: Convert): string {
   if (!potent(config)) return input.value;
   let result = "";
+  const skip = config.removeDiacritics
+    ? diacriticTest(config.removeDiacritics)
+    : () => false;
+  const map = config.targetScript ?? ((x) => x);
   [...input.value].forEach((token) => {
-    result += config.targetScript!(token) ?? token;
+    if (skip(token)) return;
+    result += map(token) ?? token;
   });
   return result;
 }
