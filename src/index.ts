@@ -64,18 +64,12 @@ convert.applyConfig(conversion);
     "taamimToggle"
   ) as HTMLInputElement;
 
-  niqqudToggle.addEventListener("input", () => {
-    if (niqqudToggle.checked)
-      conversion.config.removeDiacritics |= convert.Diacritics.Niqqud;
-    else conversion.config.removeDiacritics &= ~convert.Diacritics.Niqqud;
-    convert.applyConfig(conversion);
-  });
-  taamimToggle.addEventListener("input", () => {
-    if (taamimToggle.checked)
-      conversion.config.removeDiacritics |= convert.Diacritics.Taamim;
-    else conversion.config.removeDiacritics &= ~convert.Diacritics.Taamim;
-    convert.applyConfig(conversion);
-  });
+  niqqudToggle.addEventListener("input", () =>
+    convert.setNiqqud(conversion, niqqudToggle.checked)
+  );
+  taamimToggle.addEventListener("input", () =>
+    convert.setTaamim(conversion, taamimToggle.checked)
+  );
 })();
 
 (document.getElementById("copyButton") as HTMLButtonElement).onclick = () =>

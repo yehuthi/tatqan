@@ -78,3 +78,15 @@ export function copy(convert: Convert) {
       : convert.input.value) ?? ""
   );
 }
+
+export function setNiqqud(convert: Convert, niqqud: boolean) {
+  if (niqqud) convert.config.removeDiacritics &= ~Diacritics.Niqqud;
+  else convert.config.removeDiacritics |= Diacritics.Niqqud;
+  applyConfig(convert);
+}
+
+export function setTaamim(convert: Convert, taamim: boolean) {
+  if (taamim) convert.config.removeDiacritics &= ~Diacritics.Taamim;
+  else convert.config.removeDiacritics |= Diacritics.Taamim;
+  applyConfig(convert);
+}
