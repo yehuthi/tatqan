@@ -70,3 +70,11 @@ export function applyConfig(convert: Convert) {
     convert.output.textContent = "";
   }
 }
+
+export function copy(convert: Convert) {
+  navigator.clipboard.writeText(
+    (potent(convert.config)
+      ? convert.output.textContent
+      : convert.input.value) ?? ""
+  );
+}

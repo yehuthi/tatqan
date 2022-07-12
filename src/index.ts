@@ -78,9 +78,5 @@ convert.applyConfig(conversion);
   });
 })();
 
-(document.getElementById("copyButton") as HTMLButtonElement).onclick = () => {
-  navigator.clipboard.writeText(
-    (convert.potent(conversion.config) ? output.textContent : source.value) ??
-      ""
-  );
-};
+(document.getElementById("copyButton") as HTMLButtonElement).onclick = () =>
+  convert.copy(conversion);
