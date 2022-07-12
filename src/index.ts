@@ -26,6 +26,7 @@ if (!isMobile({ tablet: true })) setTimeout(() => source.focus(), 0);
 
 const conversion: convert.Convert = {
   input: source,
+  output,
   config: {
     targetScript: undefined,
     removeDiacritics: 0,
@@ -46,17 +47,14 @@ targetScriptSelect.addEventListener("input", () => {
     output.innerText = "";
   } else {
     conversion.config.targetScript = convert.targetScripts[i - 1];
-    output.innerText = convert.convert(conversion);
+    convert.applyConfig(conversion);
   }
 });
 ((i) => {
   targetScriptSelect.selectedIndex = i;
   conversion.config.targetScript = convert.targetScripts[i - 1];
 })(1);
-source.addEventListener("input", () => {
-  if (convert.potent(conversion.config))
-    output.innerText = convert.convert(conversion);
-});
+convert.applyConfig(conversion);
 
 (() => {
   const niqqudToggle = document.getElementById(
@@ -70,13 +68,13 @@ source.addEventListener("input", () => {
     if (niqqudToggle.checked)
       conversion.config.removeDiacritics |= convert.Diacritics.Niqqud;
     else conversion.config.removeDiacritics &= ~convert.Diacritics.Niqqud;
-    output.innerText = convert.convert(conversion);
+    convert.applyConfig(conversion);
   });
   taamimToggle.addEventListener("input", () => {
     if (taamimToggle.checked)
       conversion.config.removeDiacritics |= convert.Diacritics.Taamim;
     else conversion.config.removeDiacritics &= ~convert.Diacritics.Taamim;
-    output.innerText = convert.convert(conversion);
+    convert.applyConfig(conversion);
   });
 })();
 

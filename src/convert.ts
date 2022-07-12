@@ -2,7 +2,8 @@ import * as he2paleo from "he2paleo";
 import * as unniqqud from "unniqqud";
 
 export interface Convert {
-  input: { readonly value: string };
+  input: HTMLTextAreaElement;
+  output: HTMLElement;
   config: Config;
 }
 
@@ -46,7 +47,7 @@ function diacriticTest(diacritics: Diacritics): (char: string) => boolean {
     : unniqqud.taam;
 }
 
-export function convert({ input, config }: Convert): string {
+function convertOnce({ input, output, config }: Convert) {
   if (!potent(config)) return input.value;
   let result = "";
   const skip = config.removeDiacritics
@@ -57,5 +58,15 @@ export function convert({ input, config }: Convert): string {
     if (skip(token)) return;
     result += map(token) ?? token;
   });
-  return result;
+  output.textContent = result;
+}
+
+export function applyConfig(convert: Convert) {
+  if (potent(convert.config)) {
+    convert.input.oninput = () => convertOnce(convert);
+    convertOnce(convert);
+  } else {
+    convert.input.oninput = null;
+    convert.output.textContent = "";
+  }
 }
