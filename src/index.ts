@@ -37,18 +37,14 @@ const targetScriptSelect: HTMLSelectElement = document.getElementById(
 ) as HTMLSelectElement;
 convert.targetScripts.forEach((targetScript) => {
   const option = document.createElement("option");
-  option.innerText = targetScript.nameEn;
+  option.textContent = targetScript.nameEn;
   targetScriptSelect.appendChild(option);
 });
 targetScriptSelect.addEventListener("input", () => {
   const i = targetScriptSelect.selectedIndex;
-  if (i === 0) {
-    conversion.config.targetScript = undefined;
-    output.innerText = "";
-  } else {
-    conversion.config.targetScript = convert.targetScripts[i - 1];
-    convert.applyConfig(conversion);
-  }
+  conversion.config.targetScript =
+    i === 0 ? undefined : convert.targetScripts[i - 1];
+  convert.applyConfig(conversion);
 });
 ((i) => {
   targetScriptSelect.selectedIndex = i;
