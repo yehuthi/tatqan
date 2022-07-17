@@ -1468,6 +1468,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"n2words@npm:^1.11.1":
+  version: 1.11.1
+  resolution: "n2words@npm:1.11.1"
+  checksum: 70c351ad7eb1f7efa8ab4a9c5930d9229ba41bf96d72e83882ea12ec85b2607608934a4131a63af4df4080c4da4211507d5ec4f8b77c43536d5a3c91065dda4a
+  languageName: node
+  linkType: hard
+
 "negotiator@npm:^0.6.3":
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
@@ -2092,6 +2099,7 @@ __metadata:
     gh-pages: ^4.0.0
     he2paleo: ^0.1.0
     is-mobile: ^3.1.1
+    n2words: ^1.11.1
     rimraf: ^3.0.2
     rollup: ^2.76.0
     rollup-plugin-minify-html: ^0.1.2

@@ -29,6 +29,7 @@ const conversion: convert.Convert = {
   output,
   config: {
     targetScript: undefined,
+    targetNumerals: undefined,
     removeDiacritics: 0,
   },
 };
@@ -50,6 +51,22 @@ targetScriptSelect.addEventListener("input", () => {
   targetScriptSelect.selectedIndex = i;
   conversion.config.targetScript = convert.targetScripts[i - 1];
 })(1);
+
+const targetNumeralsSelect: HTMLSelectElement = document.getElementById(
+  "targetNumeralsSelect"
+) as HTMLSelectElement;
+convert.targetNumerals.forEach((targetNumeral) => {
+  const option = document.createElement("option");
+  option.textContent = targetNumeral.nameEn;
+  targetNumeralsSelect.appendChild(option);
+});
+targetNumeralsSelect.addEventListener("input", () => {
+  const i = targetNumeralsSelect.selectedIndex;
+  conversion.config.targetNumerals =
+    i === 0 ? undefined : convert.targetNumerals[i - 1];
+  convert.applyConfig(conversion);
+});
+
 convert.applyConfig(conversion);
 
 (() => {

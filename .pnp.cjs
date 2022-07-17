@@ -40,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gh-pages", "npm:4.0.0"],\
             ["he2paleo", "npm:0.1.0"],\
             ["is-mobile", "npm:3.1.1"],\
+            ["n2words", "npm:1.11.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.76.0"],\
             ["rollup-plugin-minify-html", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:0.1.2"],\
@@ -1756,6 +1757,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["n2words", [\
+        ["npm:1.11.1", {\
+          "packageLocation": "./.yarn/cache/n2words-npm-1.11.1-64ff2e80de-70c351ad7e.zip/node_modules/n2words/",\
+          "packageDependencies": [\
+            ["n2words", "npm:1.11.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["negotiator", [\
         ["npm:0.6.3", {\
           "packageLocation": "./.yarn/cache/negotiator-npm-0.6.3-9d50e36171-b8ffeb1e26.zip/node_modules/negotiator/",\
@@ -2466,6 +2476,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gh-pages", "npm:4.0.0"],\
             ["he2paleo", "npm:0.1.0"],\
             ["is-mobile", "npm:3.1.1"],\
+            ["n2words", "npm:1.11.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.76.0"],\
             ["rollup-plugin-minify-html", "virtual:e3e9f8dd2f872a8c7004c12c4853c99c4f7bdb9b7ef59bf7d82176f48d43a834d86d87cac2bb34cfb25287e50a25842cee15efa62b2b0e0c66fd30134613d42d#npm:0.1.2"],\

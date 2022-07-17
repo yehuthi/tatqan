@@ -9,6 +9,7 @@
     "gh-pages": "^4.0.0",
     "he2paleo": "^0.1.0",
     "is-mobile": "^3.1.1",
+    "n2words": "^1.11.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.76.0",
     "rollup-plugin-minify-html": "^0.1.2",
